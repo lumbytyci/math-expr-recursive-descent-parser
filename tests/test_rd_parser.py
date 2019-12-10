@@ -89,3 +89,17 @@ def test_mult_combined_with_div():
     expr = '25*5/5*2.5'
     parser = ExpressionParser(expr)
     assert parser.multiplication() == (25 * 5) / (5 * 2.5)
+
+
+def test_addition_add_two_numbers():
+    expr = '1923.1023+12312.13'
+    parser = ExpressionParser(expr)
+    assert parser.addition() == 1923.1023 + 12312.13
+
+
+def test_addition_subtract_two_numbers():
+    expr = '45785.0992-598.598'
+    parser = ExpressionParser(expr)
+    assert parser.addition() == 45785.0992 - 598.598
+
+# TODO Add tests for mixed expressions

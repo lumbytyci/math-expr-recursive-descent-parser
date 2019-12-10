@@ -54,13 +54,29 @@ class ExpressionParser():
 
         return p_expr
 
+    def addition(self) -> float:
+        m_expr = self.multiplication()
+        if not self.eof and self.expr[self.cur] in ['+', '-']:
+            operator = self.expr[self.cur]
+            self.advance()
+            a_expr = self.addition()
+            if operator == '+':
+                m_expr += a_expr
+            else:
+                m_expr -= a_expr
+
+        return m_expr
+
+    def expression(self) -> float:
+        return self.addition()
+
 
 if __name__ == "__main__":
     while True:
         try:
             expr = input('>>> ')
             parser = ExpressionParser(expr)
-            print(parser.multiplication())
-        except KeyboardInterrupt:
+            print(parser.expression())
+        except (KeyboardInterrupt, EOFError):
             print()
             exit()
