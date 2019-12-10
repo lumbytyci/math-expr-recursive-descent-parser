@@ -102,4 +102,16 @@ def test_addition_subtract_two_numbers():
     parser = ExpressionParser(expr)
     assert parser.addition() == 45785.0992 - 598.598
 
+
+def test_expression_grouping_around_primary():
+    expr = '((((2))))'
+    parser = ExpressionParser(expr)
+    assert parser.expression() == 2
+
+
+def test_expression_grouping_with_multiple_op():
+    expr = '(2*(2+2)/4)*2'
+    parser = ExpressionParser(expr)
+    assert parser.expression() == (2 * (2 + 2) / 4) * 2
+
 # TODO Add tests for mixed expressions

@@ -12,8 +12,15 @@ class ExpressionParser():
 
     def primary(self) -> float:
         start_idx = self.cur
-        while not self.eof and self.expr[self.cur].isnumeric():
+        while not self.eof and (self.expr[self.cur].isnumeric()
+                                or self.expr[self.cur] == '('):
+
             self.advance()
+            if self.expr[self.cur - 1] == '(':
+                expr = self.expression()
+                self.advance()
+                return expr
+
             if not self.eof and self.expr[self.cur] == '.':
                 self.advance()
 
