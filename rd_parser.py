@@ -41,13 +41,26 @@ class ExpressionParser():
 
         return u_expr
 
+    def multiplication(self) -> float:
+        p_expr = self.power()
+        if not self.eof and self.expr[self.cur] in ['*', '/']:
+            operator = self.expr[self.cur]
+            self.advance()
+            m_expr = self.multiplication()
+            if operator == '*':
+                p_expr *= m_expr
+            else:
+                p_expr /= m_expr
+
+        return p_expr
+
 
 if __name__ == "__main__":
     while True:
         try:
             expr = input('>>> ')
             parser = ExpressionParser(expr)
-            print(parser.power())
+            print(parser.multiplication())
         except KeyboardInterrupt:
             print()
             exit()

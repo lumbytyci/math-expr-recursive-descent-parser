@@ -52,22 +52,40 @@ def test_unary_with_combined_signs():
 def test_power_squared():
     expr = '2^2'
     parser = ExpressionParser(expr)
-    assert parser.power() == 4
+    assert parser.power() == 2**2
 
 
 def test_power_squared_negative():
     expr = '-2^2'
     parser = ExpressionParser(expr)
-    assert parser.power() == 4
+    assert parser.power() == (-2)**2
 
 
 def test_power_power_to_power():
     expr = '3^2^3'
     parser = ExpressionParser(expr)
-    assert parser.power() == 6561
+    assert parser.power() == 3**2**3
 
 
 def test_power_squared_root():
     expr = '9^0.5'
     parser = ExpressionParser(expr)
-    assert parser.power() == 3
+    assert parser.power() == 9**0.5
+
+
+def test_mult():
+    expr = '23*-12.29'
+    parser = ExpressionParser(expr)
+    assert parser.multiplication() == 23 * (-12.29)
+
+
+def test_mult_div():
+    expr = '782/3.312'
+    parser = ExpressionParser(expr)
+    assert parser.multiplication() == 782 / 3.312
+
+
+def test_mult_combined_with_div():
+    expr = '25*5/5*2.5'
+    parser = ExpressionParser(expr)
+    assert parser.multiplication() == (25 * 5) / (5 * 2.5)
