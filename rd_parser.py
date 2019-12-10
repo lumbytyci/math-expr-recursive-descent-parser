@@ -32,13 +32,22 @@ class ExpressionParser():
 
         return u_expr
 
+    def power(self) -> float:
+        u_expr = self.unary()
+        if not self.eof and self.expr[self.cur] == '^':
+            self.advance()
+            exponent = self.power()
+            u_expr = u_expr ** exponent
+
+        return u_expr
+
 
 if __name__ == "__main__":
     while True:
         try:
             expr = input('>>> ')
             parser = ExpressionParser(expr)
-            print(parser.unary())
+            print(parser.power())
         except KeyboardInterrupt:
             print()
             exit()

@@ -47,3 +47,27 @@ def test_unary_with_combined_signs():
     expr = '-+-+-+-+-78.92'
     parser = ExpressionParser(expr)
     assert parser.unary() == -78.92
+
+
+def test_power_squared():
+    expr = '2^2'
+    parser = ExpressionParser(expr)
+    assert parser.power() == 4
+
+
+def test_power_squared_negative():
+    expr = '-2^2'
+    parser = ExpressionParser(expr)
+    assert parser.power() == 4
+
+
+def test_power_power_to_power():
+    expr = '3^2^3'
+    parser = ExpressionParser(expr)
+    assert parser.power() == 6561
+
+
+def test_power_squared_root():
+    expr = '9^0.5'
+    parser = ExpressionParser(expr)
+    assert parser.power() == 3
