@@ -1,6 +1,9 @@
 [run]
 branch = True
 source = .
+omit =
+    venv/*
+    setup.py
 
 [report]
 # Regexes for lines to exclude from consideration
