@@ -16,19 +16,19 @@ Primary = Immediate | "(" Expression ")"
 ```
 
 Currently the parser runs in a simple [REPL](https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop):
-```
->>> (2)       
-2.0
->>> 2+4
-6.0
->>> 100-25
-75.0
->>> 100/3
-33.333333333333336
->>> 2^8
-256.0
->>> (2+2)*8-9/9
-31.0
+```    
+>>> 2+2+2-6
+0.0
+>>> 2*4/8
+1.0
+>>> 2^10
+1024.0
+>>> (2+2)*2
+8.0
+>>> 2^2^2
+16.0
+>>> 2^((3+2)*2)/(2*512)
+1.0
 ```
 ## Getting started
 1. Install virtual-env (skip if already installed)
