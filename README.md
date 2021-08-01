@@ -32,7 +32,7 @@ Currently the parser runs in a simple [REPL](https://en.wikipedia.org/wiki/Read%
 ```
 ## Getting started
 1. Install virtual-env (skip if already installed)
-2. Clone the repo and cd to it
+2. Clone the repository
 3. Setup the virtualenv and activate
 4. Install the required dependencies
 ```
